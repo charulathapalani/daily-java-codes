@@ -1,0 +1,29 @@
+import java.util.*;
+class LongAriSub {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int maxLen = 2;
+        for (int i = 0; i < n - 1; i++) {
+            int j = i + 1;
+            int diff = arr[j] - arr[i];
+            int len = 2;
+            while (j < n - 1) {
+                if (arr[j + 1] - arr[j] == diff) {
+                    len++;
+                } else {
+                    break;
+                }
+                j++;
+            }
+            if (len > maxLen) {
+                maxLen = len;
+            }
+        }
+        System.out.println(maxLen);
+    }
+}
