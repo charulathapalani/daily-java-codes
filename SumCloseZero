@@ -1,0 +1,32 @@
+import java.util.*;
+class SumCloseZero {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int closest = 1000000;
+        int result = 0;
+        for (int i = 0; i < n; i++) {
+            int j = i;
+            int sum = 0;
+            while (j < n) {
+                sum += arr[j];
+                int abs;
+                if (sum < 0) {
+                    abs = -sum;
+                } else {
+                    abs = sum;
+                }
+                if (abs < closest) {
+                    closest = abs;
+                    result = sum;
+                }
+                j++;
+            }
+        }
+        System.out.println(result);
+    }
+}
