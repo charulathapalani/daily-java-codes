@@ -1,0 +1,28 @@
+import java.util.*;
+class NumToWord {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String one[] = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        String ten[] = {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+        String teen[] = {"ten", "eleven", "twelve", "thirteen", "fourteen",
+                         "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+        if(n >= 100) {
+            System.out.print(one[n/100] + " hundred");
+            n = n % 100;
+            if(n == 0) {
+                System.out.print(" only");
+                return;
+            }
+            System.out.print(" and ");
+        }
+        if(n >= 10 && n <= 19) {
+            System.out.print(teen[n - 10]);
+        } else {
+            System.out.print(ten[n / 10]);
+            if(n % 10 != 0) {
+                System.out.print(" " + one[n % 10]);
+            }
+        }
+    }
+}
