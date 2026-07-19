@@ -1,0 +1,45 @@
+ import java.util.*;
+class Node {
+    int data;
+    Node next;
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+class CircularLL {
+    Node head = null;
+    void create(int data) {
+        Node newnode = new Node(data);
+        if (head == null) {
+            head = newnode;
+            newnode.next = head;
+        } else {
+            Node temp = head;
+            while (temp.next != head) {
+                temp = temp.next;
+            }
+            temp.next = newnode;
+            newnode.next = head;
+        }
+    }
+    void display() {
+        Node temp = head;
+        if (head == null) {
+            return;
+        }
+        while (temp.next != head) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        CircularLL c = new CircularLL();
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            c.create(sc.nextInt());
+        }
+        c.display();
+    }
+}
