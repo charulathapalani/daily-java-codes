@@ -1,0 +1,63 @@
+import java.util.*;
+class Node {
+    int data;
+    Node next;
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+class SingleLinkedList{
+    Node head = null;
+    void create(int data) {
+        Node newnode = new Node(data);
+        if (head == null) {
+            head = newnode;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newnode;
+        }
+    }
+    void insertMiddle(int pos, int data) {
+        Node newnode = new Node(data);
+        Node temp = head;
+        for (int i = 0; i < pos - 1; i++) {
+            temp = temp.next;
+        }
+        newnode.next = temp.next;
+        temp.next = newnode;
+    }
+    void deleteMiddle(int pos) {
+        Node temp = head;
+        for (int i = 0; i < pos - 1; i++) {
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+    }
+    void display() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        SingleLinkedList s = new SingleLinkedList();
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            s.create(sc.nextInt());
+        }
+        int pos = sc.nextInt();
+        int val = sc.nextInt();
+        s.insertMiddle(pos, val);
+        s.display();
+        int delPos = sc.nextInt();
+        s.deleteMiddle(delPos);
+        s.display();
+    }
+}
